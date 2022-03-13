@@ -1,102 +1,52 @@
 import React, { useRef, useState } from 'react';
-import './App.css';
 
 import firebase from 'firebase/compat/app';
-import 'firebase/compat/auth';
 import 'firebase/compat/firestore';
+import 'firebase/compat/auth';
+import 'firebase/compat/analytics';
 
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useCollectionData } from 'react-firebase-hooks/firestore';
+import './css/Chat.css'
 
 const auth = firebase.auth();
 const firestore = firebase.firestore();
+const analytics = firebase.analytics();
 
- 
-function Chat() {
-  
-const [user] = useAuthState(auth);
-
-  return (
-    <div className="App">
-      <header>
-         
-      </header>
-      <section>
-        { user ? <ChatRoom /> : <SignIn />}
-      </section>
-    </div>
-  );
-}
-
-function SignIn() {
-  const signInWithGoogle = () => {
-    const provider = new firebase.auth.GoogleAuthProvider();
-    auth.signInWithPopup(provider);
-  }
-  return (
-    <button onClick={signInWithGoogle}>sign in with google</button>
-  )
-}
-
-function SignOut() {
-  return auth.currentUser && (
-    <button onClick={() => auth.signOut()}>sign out</button>
-  )
-}
-
-function userSelect() {
-  const usersRef = firestore.user('identifier');
-  const query = usersRef.orderBy('created')
-  const [users] = useCollectionData(query, {idField: 'uid'});
-
-}
-
-function ChatRoom() {
+export default function ChatRoom() {
+  const dummy = useRef();
   const messagesRef = firestore.collection('messages');
   const query = messagesRef.orderBy('createdAt').limit(25);
 
-  const [messages] = useCollectionData(query, {idField: 'id'});
+  const [messages] = useCollectionData(query, { idField: 'id' });
 
   const [formValue, setFormValue] = useState('');
+
 
   const sendMessage = async (e) => {
     e.preventDefault();
 
-    const { uid } = auth.currentUser;
+    const { uid, photoURL } = auth.currentUser;
 
     await messagesRef.add({
       text: formValue,
       createdAt: firebase.firestore.FieldValue.serverTimestamp(),
-      uid
+      uid,
+      photoURL
     })
 
     setFormValue('');
-    dummy.current.scrollIntoView({ behavior: 'smooth' });
   }
 
-  return (
-    <div>
-    <div>
-      {messages && messages.map(msg => <ChatMessage key={msg.id} message={msg} />)}
-    </div>
+  return (<>
+<div className="chatbox">
     <form onSubmit={sendMessage}>
-    <input value={formValue} onChange={(e) => setFormValue(e.target.value)}/>
-    <button type="submit" disabled={!form}>Send</button>
+
+      <textarea type="text" value={formValue} onChange={(e) => setFormValue(e.target.value)} placeholder="say something nice" />
+<div className="submitbtn">
+      <button className="submitbtntext" type="submit" disabled={!formValue}>Send Message</button>
+ </div>
     </form>
     </div>
-  )
+  </>)
 }
-
-function ChatMessage(props) {
-  const { text, uid } = props.message;
-
-  const messageClass = uid === auth.currentUser.uid ? 'sent' : 'recieved'
-  return (
-    <div>
-  <div className={`mesage ${messageClass}`}> </div>
-  <p>{text}</p>
-  </div>
-  )
-}
-
-export default Chat;
