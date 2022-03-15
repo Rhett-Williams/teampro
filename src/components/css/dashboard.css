@@ -1,0 +1,104 @@
+.backgroundlio {
+    position: absolute;
+    width: 100%;
+    height: 1080px;
+    background-color: #E8E8E8;
+}
+
+.theteamcard {
+    position: relative;
+    top: 247px;
+left: 744px;
+width: 600px;
+height: 100%;
+/* UI Properties */
+background: #FFFFFF 0% 0% no-repeat padding-box;
+border-radius: 20px;
+}
+
+.theteam{
+    position: relative;
+    top: 10px;
+left: 0px;
+width: 153px;
+height: 48px;
+/* UI Properties */
+text-align: left;
+font: normal normal normal 35px/48px DM Serif Display;
+letter-spacing: 0px;
+color: #002E27;
+opacity: 1;
+}
+
+.Header1 {
+/* UI Properties */
+text-align: center;
+font: normal normal normal 60px/82px DM Serif Display;
+letter-spacing: 0px;
+color: #FFFDE0;
+opacity: 1;
+}
+
+.logoutsidebar {
+    position: absolute;
+
+left: 0px;
+width: 344px;
+height: 1080px;
+/* UI Properties */
+background: #002E27 0% 0% no-repeat padding-box;
+border: 1px solid #707070;
+opacity: 1;
+}
+
+.signoutbtn {
+    position: absolute;
+    top: 995px;
+left: 44px;
+width: 256px;
+height: 50px;
+/* UI Properties */
+border: 2px solid #FFFDE0;
+border-radius: 10px;
+opacity: 1;
+}
+
+.signoutbtntext {
+    position: absolute;
+    top: 9px;
+left: 33px;
+width: 200px;
+height: 29px;
+/* UI Properties */
+text-align: center;
+font: normal normal bold 22px/29px DM Sans;
+letter-spacing: 0px;
+color: #FFFDE0;
+opacity: 1;
+}
+
+.selectallbtn {
+    position: relative;
+    top: 10px;
+    left: 0px;
+    width: 103px;
+    height: 32px;
+    /* UI Properties */
+    background: #002E27 0% 0% no-repeat padding-box;
+    border-radius: 10px;
+    opacity: 1;
+}
+
+.selectallbtntext {
+    position: relative;
+    top: 3px;
+left: 12px;
+width: 68px;
+height: 21px;
+/* UI Properties */
+text-align: right;
+font: normal normal normal 16px/21px DM Sans;
+letter-spacing: 0px;
+color: #FFFDE0;
+opacity: 1;
+}

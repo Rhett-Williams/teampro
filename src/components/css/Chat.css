@@ -1,0 +1,42 @@
+.chatbox {
+    text-align: left;
+    Margin-top: 20px;
+font: normal normal normal 14px/18px DM Sans;
+letter-spacing: 0px;
+color: #002E27;
+opacity: 1;
+}
+
+input[type=text], select, textarea {
+    position: relative;
+    width: 528px;
+    height: 104px;
+    left: 40px;
+    padding: 12px;
+    background-color: #E8E8E8;
+    resize: vertical;
+  }
+
+  .submitbtn {
+      position: relative;
+    top: 0px;
+    left: 40px;
+    width: 528px;
+    height: 50px;
+    /* UI Properties */
+    background: #002E27 0% 0% no-repeat padding-box;
+    border-radius: 10px;
+    opacity: 1;
+  }
+
+  .submitbtntext {
+      left:40%;
+      top: 30%;
+    position: relative;
+    /* UI Properties */
+    text-align: center;
+    font: normal normal medium 20px/26px DM Sans;
+    letter-spacing: 0px;
+    color: #FFFDE0;
+    opacity: 1;
+  }
